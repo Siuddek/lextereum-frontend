@@ -1,1 +1,7 @@
-<p>file-chooser works!</p>
+<div class="file-chooser">
+
+  Click to upload an agreement:
+  <button mat-raised-button class="file-upload-btn" (click)="openFileChooserSheet()" > Upload image </button>
+  <br/>
+  <img *ngIf="documentImageUrl" [src]="documentImageUrl" alt="agreement" class="document-img">
+</div>

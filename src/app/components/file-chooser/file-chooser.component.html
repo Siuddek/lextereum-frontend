@@ -4,4 +4,9 @@
   <button mat-raised-button class="file-upload-btn" (click)="openFileChooserSheet()" > Upload image </button>
   <br/>
   <img *ngIf="documentImageUrl" [src]="documentImageUrl" alt="agreement" class="document-img">
+
+  <div *ngIf="showImage" class="document-validation">
+    <button mat-fab color="success" class="validation-btn" (click)="onDocumentValidated(true)">Accept</button>
+    <button mat-fab color="warn" class="validation-btn" (click)="onDocumentValidated(false)">Denie</button>
+  </div>
 </div>

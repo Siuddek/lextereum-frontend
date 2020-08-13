@@ -11,3 +11,24 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.mat-button.mat-success,
+.mat-stroked-button.mat-success {
+  color: #52DF26;
+}
+.mat-button.mat-success:hover,
+.mat-stroked-button.mat-success:hover {
+  background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  color: #f0fff3;
+  background-color: #52DF26;
+}
+
+.mat-icon-button.mat-success {
+  color:#52DF26;
+}

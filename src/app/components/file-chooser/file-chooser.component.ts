@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 
 @Component({
@@ -6,23 +6,41 @@ import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet'
   templateUrl: './file-chooser.component.html',
   styleUrls: ['./file-chooser.component.css']
 })
-export class FileChooserComponent {
+export class FileChooserComponent implements OnInit {
 
   documentImageUrl: string;
+  showImage: boolean;
 
   constructor(private optionsSheet: MatBottomSheet) { }
 
+  ngOnInit(): void {
+    this.showImage = false;
+  }
+
   openFileChooserSheet(): void {
     const uploadOptionRef = this.optionsSheet.open(ImageOptionUploadSheetComponent, {disableClose: false});
+    this.renderImage(uploadOptionRef);
+  }
+
+  onDocumentValidated(isAccepted: boolean): void {
+    if (isAccepted) {
+      console.log(isAccepted);
+    } else {
+      this.showImage = false;
+      this.documentImageUrl = null;
+    }
+  }
+
+  private renderImage(uploadOptionRef: MatBottomSheetRef<ImageOptionUploadSheetComponent, any>): void {
     uploadOptionRef.afterDismissed().subscribe((documentImage) => {
       const reader = new FileReader();
       reader.readAsDataURL(documentImage);
       reader.onload = (event) => {
         this.documentImageUrl = event.target.result as string;
+        this.showImage = true;
       };
     });
   }
-
 }
 
 @Component({

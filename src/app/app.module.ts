@@ -9,6 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatBottomSheet} from '@angular/material/bottom-sheet';
 import {MatListModule} from '@angular/material/list';
 import {Overlay} from '@angular/cdk/overlay';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {Overlay} from '@angular/cdk/overlay';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
   ],
   entryComponents: [
     FileChooserComponent

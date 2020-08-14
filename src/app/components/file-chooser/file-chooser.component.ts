@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import {DocumentParsingService} from '../../services/document-parsing.service';
 
 @Component({
   selector: 'app-file-chooser',
@@ -10,8 +11,9 @@ export class FileChooserComponent implements OnInit {
 
   documentImageUrl: string;
   showImage: boolean;
+  documentImageFile: File;
 
-  constructor(private optionsSheet: MatBottomSheet) { }
+  constructor(private parseService: DocumentParsingService, private optionsSheet: MatBottomSheet) { }
 
   ngOnInit(): void {
     this.showImage = false;
@@ -24,7 +26,9 @@ export class FileChooserComponent implements OnInit {
 
   onDocumentValidated(isAccepted: boolean): void {
     if (isAccepted) {
-      console.log(isAccepted);
+      this.parseService.getParsedDocument(this.documentImageFile).subscribe(result => {
+        console.log(result);
+      });
     } else {
       this.showImage = false;
       this.documentImageUrl = null;
@@ -36,6 +40,7 @@ export class FileChooserComponent implements OnInit {
       const reader = new FileReader();
       reader.readAsDataURL(documentImage);
       reader.onload = (event) => {
+        this.documentImageFile = documentImage;
         this.documentImageUrl = event.target.result as string;
         this.showImage = true;
       };

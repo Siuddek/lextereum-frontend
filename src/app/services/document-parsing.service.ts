@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
+import {SellAgreement} from '../models/SellAgreement';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,9 @@ export class DocumentParsingService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getParsedDocument(document: File): Observable<Response> {
+  public getParsedDocument(document: File): Observable<SellAgreement> {
     const formData = new FormData();
     formData.append('documentImage', document);
-    return this.httpClient.put<Response>(`${this.lextereumUrl}${this.parseEndPoint}`, formData);
+    return this.httpClient.put<SellAgreement>(`${this.lextereumUrl}${this.parseEndPoint}`, formData);
   }
 }

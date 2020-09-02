@@ -12,11 +12,13 @@ export class FileChooserComponent implements OnInit {
   documentImageUrl: string;
   showImage: boolean;
   documentImageFile: File;
+  creationInProgress: boolean;
 
   constructor(private parseService: DocumentParsingService, private optionsSheet: MatBottomSheet) { }
 
   ngOnInit(): void {
     this.showImage = false;
+    this.creationInProgress = true;
   }
 
   openFileChooserSheet(): void {

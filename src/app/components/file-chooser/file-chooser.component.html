@@ -9,4 +9,8 @@
     <button mat-fab color="success" class="validation-btn" (click)="onDocumentValidated(true)">Accept</button>
     <button mat-fab color="warn" class="validation-btn" (click)="onDocumentValidated(false)">Denie</button>
   </div>
+
+  <span>
+    <mat-spinner *ngIf="creationInProgress" diameter="100"></mat-spinner>
+  </span>
 </div>

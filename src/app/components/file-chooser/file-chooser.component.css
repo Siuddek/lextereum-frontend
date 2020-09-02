@@ -3,6 +3,7 @@
   font-size: large;
   color: white;
   margin-top: 10px;
+  background-color: #5C9AFF;
 }
 
 .file-upload-btn {
@@ -45,6 +46,11 @@
 
   .file-chooser {
     text-align: center;
+    padding: 20px;
+    font-size: large;
+    color: white;
+    margin-top: 10px;
+    background-color: #5C9AFF;
   }
 
 }

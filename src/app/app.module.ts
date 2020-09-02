@@ -10,6 +10,7 @@ import {MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatBottomSheet} from '@angular/materia
 import {MatListModule} from '@angular/material/list';
 import {Overlay} from '@angular/cdk/overlay';
 import {HttpClientModule} from '@angular/common/http';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserAnimationsModule,
     MatButtonModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     FileChooserComponent

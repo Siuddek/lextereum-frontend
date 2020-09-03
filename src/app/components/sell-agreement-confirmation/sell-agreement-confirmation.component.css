@@ -1,0 +1,12 @@
+.agreement-confirmation-dialog {
+  font-family: "Helvetica Neue",sans-serif;
+  display: block;
+}
+
+.cancel-btn {
+  float: left;
+}
+
+.ok-btn {
+  float: right;
+}

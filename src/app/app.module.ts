@@ -11,12 +11,15 @@ import {MatListModule} from '@angular/material/list';
 import {Overlay} from '@angular/cdk/overlay';
 import {HttpClientModule} from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SellAgreementConfirmationComponent } from './components/sell-agreement-confirmation/sell-agreement-confirmation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FileChooserComponent,
-    ImageOptionUploadSheetComponent
+    ImageOptionUploadSheetComponent,
+    SellAgreementConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -25,10 +28,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatButtonModule,
     MatListModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   entryComponents: [
-    FileChooserComponent
+    FileChooserComponent,
+    SellAgreementConfirmationComponent
   ],
   providers: [
     {provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},

@@ -25,6 +25,11 @@
   margin-bottom: 10px;
 }
 
+.spinner-container {
+  width: 50%;
+  margin: 20% auto 0;
+}
+
 
 .mat-button.mat-success,
 .mat-stroked-button.mat-success {

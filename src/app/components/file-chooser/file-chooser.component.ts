@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {DocumentParsingService} from '../../services/document-parsing.service';
+import {MatDialog} from '@angular/material/dialog';
+import {SellAgreement} from '../../models/SellAgreement';
+import {SellAgreementConfirmationComponent} from '../sell-agreement-confirmation/sell-agreement-confirmation.component';
 
 @Component({
   selector: 'app-file-chooser',
@@ -14,11 +17,12 @@ export class FileChooserComponent implements OnInit {
   documentImageFile: File;
   creationInProgress: boolean;
 
-  constructor(private parseService: DocumentParsingService, private optionsSheet: MatBottomSheet) { }
+  constructor(private parseService: DocumentParsingService, private optionsSheet: MatBottomSheet, public agreementConfirmationDialog: MatDialog) {
+  }
 
   ngOnInit(): void {
     this.showImage = false;
-    this.creationInProgress = true;
+    this.creationInProgress = false;
   }
 
   openFileChooserSheet(): void {
@@ -28,13 +32,30 @@ export class FileChooserComponent implements OnInit {
 
   onDocumentValidated(isAccepted: boolean): void {
     if (isAccepted) {
-      this.parseService.getParsedDocument(this.documentImageFile).subscribe(result => {
-        console.log(result);
+      this.showImage = false;
+      this.creationInProgress = true;
+      this.parseService.getParsedDocument(this.documentImageFile).subscribe(agreement => {
+        // this.delay(500);
+        this.openAgreementConfirmation(agreement);
+        this.showImage = true;
+        this.creationInProgress = false;
       });
     } else {
       this.showImage = false;
       this.documentImageUrl = null;
     }
+  }
+
+  openAgreementConfirmation(agreement: SellAgreement): void {
+    console.log(agreement);
+    const dialogRef = this.agreementConfirmationDialog.open(SellAgreementConfirmationComponent, {
+      width: '500px',
+      data: agreement
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
 
   private renderImage(uploadOptionRef: MatBottomSheetRef<ImageOptionUploadSheetComponent, any>): void {
@@ -47,6 +68,10 @@ export class FileChooserComponent implements OnInit {
         this.showImage = true;
       };
     });
+  }
+
+  private delay(ms: number): Promise<unknown> {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
 

@@ -9,7 +9,8 @@ import {SellAgreement} from '../../models/SellAgreement';
 })
 export class SellAgreementConfirmationComponent {
 
-  constructor(public dialogRef: MatDialogRef<SellAgreementConfirmationComponent>, @Inject(MAT_DIALOG_DATA) public data: SellAgreement) { }
+  constructor(public dialogRef: MatDialogRef<SellAgreementConfirmationComponent>,
+              @Inject(MAT_DIALOG_DATA) public sellAgreement: SellAgreement) { }
 
   onNoClick(): void {
     this.dialogRef.close();

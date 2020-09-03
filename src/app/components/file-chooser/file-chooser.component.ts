@@ -47,14 +47,15 @@ export class FileChooserComponent implements OnInit {
   }
 
   openAgreementConfirmation(agreement: SellAgreement): void {
-    console.log(agreement);
     const dialogRef = this.agreementConfirmationDialog.open(SellAgreementConfirmationComponent, {
       width: '500px',
       data: agreement
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    dialogRef.afterClosed().subscribe(fixedAgreement => {
+      if (fixedAgreement) {
+        console.log(fixedAgreement);
+      }
     });
   }
 

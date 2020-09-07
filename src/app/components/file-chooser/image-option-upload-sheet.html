@@ -1,0 +1,11 @@
+<mat-nav-list>
+  <mat-list-item (click)=fileInput.click()>
+    <span>Select image from local storage</span>
+  </mat-list-item>
+
+  <mat-list-item (click)=fileInput.click()>
+    <span>Take a photo</span>
+  </mat-list-item>
+
+</mat-nav-list>
+<input type="file" #fileInput class="file-upload" accept="image/*" (change)="getImage($event)"/>

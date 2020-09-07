@@ -1,0 +1,16 @@
+<div class="file-chooser">
+
+  Click to upload an agreement:
+  <button mat-raised-button class="file-upload-btn" (click)="openFileChooserSheet()" > Upload image </button>
+  <br/>
+  <img *ngIf="documentImageUrl && showImage" [src]="documentImageUrl" alt="agreement" class="document-img">
+
+  <div *ngIf="showImage" class="document-validation">
+    <button mat-fab color="warn" class="validation-btn" (click)="onDocumentValidated(false)">Denie</button>
+    <button mat-fab color="success" class="validation-btn" (click)="onDocumentValidated(true)">Accept</button>
+  </div>
+
+  <div class="spinner-container">
+    <mat-spinner style="margin: 0 auto;" *ngIf="creationInProgress" diameter="200" color="accent"></mat-spinner>
+  </div>
+</div>

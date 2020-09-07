@@ -1,0 +1,48 @@
+<span>Are the agreement details correct?</span>
+
+<div class="confirmation-form">
+  <mat-form-field>
+    <input matInput placeholder="Seller" [(ngModel)]="sellAgreement.seller">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Seller ID" [(ngModel)]="sellAgreement.sellerID">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Buyer" [(ngModel)]="sellAgreement.buyer">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Seller" [(ngModel)]="sellAgreement.buyerID">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Date" [(ngModel)]="sellAgreement.date">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Square Meters" [(ngModel)]="sellAgreement.squareMeters">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="City" [(ngModel)]="sellAgreement.city">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Mortgage Register" [(ngModel)]="sellAgreement.mortgageRegister">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Price" [(ngModel)]="sellAgreement.price">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Downpayment" [(ngModel)]="sellAgreement.downpayment">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions class="agreement-confirmation-dialog">
+  <button mat-button (click)="onNoClick()" [mat-dialog-close]="false" class="cancel-btn">Cancel</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="sellAgreement" class="ok-btn">Apply</button>
+</div>

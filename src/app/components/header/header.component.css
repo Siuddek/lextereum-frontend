@@ -1,0 +1,42 @@
+.spacer {
+  flex: 1;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: #FF006E;
+  color: white;
+  font-weight: 600;
+  font-size: 60px;
+  letter-spacing: 4px;
+}
+
+.toolbar img {
+  margin: 0 16px;
+}
+
+.account-address {
+  float: right;
+  text-align: right;
+  font-size: 15px;
+  letter-spacing: normal;
+  font-weight: normal;
+  padding: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .account-address {
+    float: left;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: normal;
+    font-weight: normal;
+    padding: 5px;
+  }
+}

@@ -16,13 +16,15 @@ import { SellAgreementConfirmationComponent } from './components/sell-agreement-
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FileChooserComponent,
     ImageOptionUploadSheetComponent,
-    SellAgreementConfirmationComponent
+    SellAgreementConfirmationComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

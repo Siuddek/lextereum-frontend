@@ -21,29 +21,6 @@
     margin: 0;
   }
 
-  .spacer {
-    flex: 1;
-  }
-
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    background-color: #FF006E;
-    color: white;
-    font-weight: 600;
-    font-size: 60px;
-    letter-spacing: 4px;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
   .toolbar #twitter-logo {
     height: 40px;
     margin: 0 16px;
@@ -93,15 +70,7 @@
   }
 </style>
 
-<div class="toolbar" role="banner">
-  <img
-    width="120"
-    alt="Angular Logo"
-    src="./assets/main_logo.png"
-  />
-  <span>brrrrr</span>
-    <div class="spacer"></div>
-</div>
+<app-header></app-header>
 
 <div class="content" role="main">
 

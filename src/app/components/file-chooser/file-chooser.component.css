@@ -1,9 +1,10 @@
-.file-chooser{
+.file-chooser {
   padding: 20px;
   font-size: large;
   color: white;
   margin-top: 10px;
   background-color: #5C9AFF;
+  font-family: "Impact", sans-serif;
 }
 
 .file-upload-btn {
@@ -35,6 +36,7 @@
 .mat-stroked-button.mat-success {
   color: #155724;
 }
+
 .mat-button.mat-success:hover,
 .mat-stroked-button.mat-success:hover {
   background-color: #f0fff3;
@@ -56,6 +58,7 @@
     color: white;
     margin-top: 10px;
     background-color: #5C9AFF;
+    font-family: "Impact", sans-serif;
   }
 
 }

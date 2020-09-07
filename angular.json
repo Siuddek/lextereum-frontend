@@ -27,6 +27,16 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
+            "allowedCommonJsDependencies": [
+              "web3",
+              "web3-core",
+              "web3-eth",
+              "web3-net",
+              "web3-eth-personal",
+              "web3-shh",
+              "web3-bzz",
+              "web3-utils"
+            ],
             "scripts": []
           },
           "configurations": {

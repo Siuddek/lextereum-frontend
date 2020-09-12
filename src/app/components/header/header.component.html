@@ -4,6 +4,10 @@
     alt="Angular Logo"
     src="./assets/main_logo.png"
   />
-  <div class="spacer"></div>
+
   <div class="account-address">account address: {{accountAddress}}</div>
+  <div class="spacer"></div>
+  <div class="create-account">
+    <button mat-raised-button color="primary" (click)="onAccountCreation()">Create Account</button>
+  </div>
 </div>

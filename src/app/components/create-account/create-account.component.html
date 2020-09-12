@@ -1,0 +1,28 @@
+<form [formGroup]="accountForm">
+  <div class="account-creation">
+    <mat-form-field>
+      <input id="name" [(ngModel)]="userAccount.name" matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input id="surname" [(ngModel)]="userAccount.surname" matInput placeholder="Surname" formControlName="surname">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input id="email" [(ngModel)]="userAccount.email" matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input id="phone" [(ngModel)]="userAccount.phone" matInput placeholder="Phone Number" formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input id="userid" [(ngModel)]="userAccount.id" matInput placeholder="ID" formControlName="userid">
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions class="account-creation-confirmation-dialog">
+    <button mat-button (click)="onNoClick()" [mat-dialog-close]="false" class="cancel-btn">Cancel</button>
+    <button mat-button [disabled]="!accountForm.valid" class="ok-btn">Create</button>
+  </div>
+</form>

@@ -9,4 +9,5 @@ export interface SellAgreement {
   mortgageRegister: string;
   price: number;
   downpayment: number;
+  documentID: string;
 }

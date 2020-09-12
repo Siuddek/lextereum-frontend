@@ -59,7 +59,7 @@ export class FileChooserComponent implements OnInit {
     });
   }
 
-  private renderImage(uploadOptionRef: MatBottomSheetRef<ImageOptionUploadSheetComponent, any>): void {
+  private renderImage(uploadOptionRef: MatBottomSheetRef<ImageOptionUploadSheetComponent>): void {
     uploadOptionRef.afterDismissed().subscribe((documentImage) => {
       const reader = new FileReader();
       reader.readAsDataURL(documentImage);

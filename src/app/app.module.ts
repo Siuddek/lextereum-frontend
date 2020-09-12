@@ -15,8 +15,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SellAgreementConfirmationComponent } from './components/sell-agreement-confirmation/sell-agreement-confirmation.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
+import { CreateAccountComponent } from './components/create-account/create-account.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HeaderComponent } from './components/header/header.component';
     FileChooserComponent,
     ImageOptionUploadSheetComponent,
     SellAgreementConfirmationComponent,
-    HeaderComponent
+    HeaderComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -37,11 +39,13 @@ import { HeaderComponent } from './components/header/header.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     FileChooserComponent,
-    SellAgreementConfirmationComponent
+    SellAgreementConfirmationComponent,
+    CreateAccountComponent
   ],
   providers: [
     {provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},

@@ -23,6 +23,6 @@
 
   <div mat-dialog-actions class="account-creation-confirmation-dialog">
     <button mat-button (click)="onNoClick()" [mat-dialog-close]="false" class="cancel-btn">Cancel</button>
-    <button mat-button [disabled]="!accountForm.valid" class="ok-btn">Create</button>
+    <button mat-button [disabled]="!accountForm.valid" class="ok-btn" (click)="onYesClick()">Create</button>
   </div>
 </form>

@@ -10,4 +10,5 @@ export interface SellAgreement {
   price: number;
   downpayment: number;
   documentID: string;
+  targetID: string;
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
-import {DocumentParsingService} from '../../services/document-parsing.service';
+import {DocumentService} from '../../services/document.service';
 import {MatDialog} from '@angular/material/dialog';
 import {SellAgreement} from '../../models/SellAgreement';
 import {SellAgreementConfirmationComponent} from '../sell-agreement-confirmation/sell-agreement-confirmation.component';
@@ -17,7 +17,7 @@ export class FileChooserComponent implements OnInit {
   documentImageFile: File;
   creationInProgress: boolean;
 
-  constructor(private parseService: DocumentParsingService, private optionsSheet: MatBottomSheet, public agreementConfirmationDialog: MatDialog) {
+  constructor(private documentService: DocumentService, private optionsSheet: MatBottomSheet, public agreementConfirmationDialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class FileChooserComponent implements OnInit {
     if (isAccepted) {
       this.showImage = false;
       this.creationInProgress = true;
-      this.parseService.getParsedDocument(this.documentImageFile).subscribe(agreement => {
+      this.documentService.getParsedDocument(this.documentImageFile).subscribe(agreement => {
         // this.delay(500);
         this.openAgreementConfirmation(agreement);
         this.showImage = true;
@@ -55,6 +55,9 @@ export class FileChooserComponent implements OnInit {
     dialogRef.afterClosed().subscribe(fixedAgreement => {
       if (fixedAgreement) {
         console.log(fixedAgreement);
+        this.documentService.saveAgreements(fixedAgreement).subscribe(res => {
+          console.log(res);
+        });
       }
     });
   }

@@ -15,13 +15,13 @@ export class HeaderComponent implements OnInit {
   constructor(private blockChain: BlockchainCommunicationService, public createAccountDialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.blockChain.getAccounts().then(accounts => {
-      if (typeof accounts !== 'undefined' && accounts.length > 0) {
-        this.accountAddress = accounts[0];
+    this.blockChain.getAccounts().then(account => {
+      if (typeof account !== 'undefined') {
+        this.accountAddress = account;
       } else {
         this.accountAddress = 'failed to load account address';
       }
-      console.log(accounts);
+      console.log(account);
     });
   }
 

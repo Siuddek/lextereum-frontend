@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {SellAgreement} from '../../models/SellAgreement';
 import {SellAgreementConfirmationComponent} from '../sell-agreement-confirmation/sell-agreement-confirmation.component';
 import {BlockchainCommunicationService} from '../../services/blockchain-communication.service';
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-file-chooser',
@@ -17,9 +18,12 @@ export class FileChooserComponent implements OnInit {
   showImage: boolean;
   documentImageFile: File;
   creationInProgress: boolean;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   constructor(private documentService: DocumentService, private optionsSheet: MatBottomSheet,
-              public agreementConfirmationDialog: MatDialog, private blockchainService: BlockchainCommunicationService) {
+              public agreementConfirmationDialog: MatDialog, private blockchainService: BlockchainCommunicationService,
+              private snackBarInfo: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -61,12 +65,26 @@ export class FileChooserComponent implements OnInit {
             const notarized = await this.blockchainService.notarizeSellAgreement(fixedAgreement.documentID, fixedAgreement.sellerID, fixedAgreement.buyerID, imageHash);
             if (notarized) {
               fixedAgreement.documentHash = imageHash;
-              const response = this.documentService.saveAgreement(fixedAgreement);
-              console.log(response);
+              console.log(imageHash);
+              this.documentService.saveAgreement(fixedAgreement).subscribe(res => console.log(res));
+            } else {
+              this.showOperationStatus('Failed to notarize document');
             }
+          } else {
+            this.showOperationStatus('Failed get image hash');
           }
         });
+      } else {
+        this.showOperationStatus('Failed to get agreement');
       }
+    });
+  }
+
+  private showOperationStatus(message: string): void {
+    this.snackBarInfo.open(message, 'OK', {
+      duration: 2000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition
     });
   }
 

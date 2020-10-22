@@ -16,12 +16,6 @@ export class BlockchainCommunicationService {
   constructor(@Inject(WEB3) private web3: Web3) {
   }
 
-  async getAccounts(): Promise<string> {
-    await this.web3.currentProvider;
-    this.account = await this.web3.eth.getAccounts().then(accounts => accounts[0]);
-    return this.account;
-  }
-
   async notarizeSellAgreement(documentID: string, sellerID: string, buyerID: string, documentHash): Promise<boolean> {
     return new Promise((resolve, reject) => {
       const agreementContract = TruffleContract(this.sellAgreementContract);
@@ -36,5 +30,11 @@ export class BlockchainCommunicationService {
         return reject(`Error in saving agreement in blockchain: ${error}`);
       });
     });
+  }
+
+  async getAccounts(): Promise<string> {
+    await this.web3.currentProvider;
+    this.account = await this.web3.eth.getAccounts().then(accounts => accounts[0]);
+    return this.account;
   }
 }

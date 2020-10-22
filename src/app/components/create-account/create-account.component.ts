@@ -3,17 +3,19 @@ import {MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserAccount} from '../../models/UserAccount';
 import {UserService} from '../../services/user.service';
-import {Subscription} from 'rxjs';
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
   styleUrls: ['./create-account.component.css']
 })
-export class CreateAccountComponent implements OnInit{
+export class CreateAccountComponent implements OnInit {
 
   accountForm: FormGroup;
   userAccount: UserAccount;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   ngOnInit(): void {
     this.userAccount = {name: '', surname: '', phone: '', email: '', id: ''};
@@ -26,17 +28,29 @@ export class CreateAccountComponent implements OnInit{
     });
   }
 
-  constructor(public dialogRef: MatDialogRef<CreateAccountComponent>, private userService: UserService) { }
+  constructor(public dialogRef: MatDialogRef<CreateAccountComponent>, private userService: UserService, private accountCreationInfo: MatSnackBar) {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  onYesClick(): boolean {
-    let userCreated: boolean;
-    this.userService.createUser(this.userAccount).subscribe(response => {
-      userCreated = response;
+  onYesClick(): void {
+    this.userService.createUser(this.userAccount).subscribe(accountCreated => {
+      if (accountCreated) {
+        this.openAccountCreationSnackBar('Account created successfully');
+      } else {
+        this.openAccountCreationSnackBar('Failed to create account');
+      }
     });
-    return userCreated;
+  }
+
+  private openAccountCreationSnackBar(message: string): void {
+    this.accountCreationInfo.open(message, 'OK', {
+      duration: 2000,
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition
+    });
+    this.dialogRef.close();
   }
 }

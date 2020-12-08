@@ -1,0 +1,14 @@
+{
+  "/documents/*": {
+    "target": "http://backend:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/user/*": {
+    "target": "http://backend:8080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

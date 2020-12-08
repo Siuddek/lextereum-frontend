@@ -65,7 +65,6 @@ export class FileChooserComponent implements OnInit {
             const notarized = await this.blockchainService.notarizeSellAgreement(fixedAgreement.documentID, fixedAgreement.sellerID, fixedAgreement.buyerID, imageHash);
             if (notarized) {
               fixedAgreement.documentHash = imageHash;
-              console.log(imageHash);
               this.documentService.saveAgreement(fixedAgreement).subscribe(res => console.log(res));
             } else {
               this.showOperationStatus('Failed to notarize document');
